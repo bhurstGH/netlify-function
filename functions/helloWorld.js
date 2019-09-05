@@ -1,5 +1,5 @@
 exports.handler = function (event, context, callback) {
-    console.log(event)
+    console.log(event.queryStringParameters.name)
     console.log(context)
     callback(null, {
         statusCode: 200,
