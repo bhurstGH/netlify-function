@@ -1,13 +1,12 @@
-const fetch = require('node-fetch')
+const axios = require('axios')
 
 const API_ENDPOINT = 'https://jsonplaceholder.typicode.com/users'
 
 exports.handler = async (event, context) => {
   let response
   try {
-    response = await fetch("https://jsonplaceholder.typicode.com/users")
-    json = await response.json()
-    console.log("JSON", json);
+    response = await axios.get(API_ENDPOINT)
+    console.log("FETCH", response.data)
     // handle response
   } catch (err) {
     console.log("ERROR")
@@ -21,6 +20,6 @@ exports.handler = async (event, context) => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify(json)
+    body: JSON.stringify(response.data)
   }
 }
